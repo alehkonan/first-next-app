@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<PostsProps> = async () => {
         posts,
         error: '',
       },
-      revalidate: 3600,
+      revalidate: 10,
     }
   } catch (e: any) {
     return {

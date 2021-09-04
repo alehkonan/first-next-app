@@ -1,5 +1,5 @@
-import { GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import React from 'react';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import React, { useState } from 'react';
 import { Card } from '../../components/Card/Card';
 
 interface IPost {
@@ -15,6 +15,13 @@ interface PostProps {
 }
 
 const Post: NextPage<PostProps> = ({ post, error }) => {
+  const [posts, setPosts] = useState<IPost[]>([]);
+  const handleClick = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await response.json() as IPost[];
+    setPosts(data);
+  };
+
   return (
     <div>
       {post && (
@@ -23,38 +30,13 @@ const Post: NextPage<PostProps> = ({ post, error }) => {
         </Card>
       )}
       {error && <span>{error}</span>}
+      <button onClick={handleClick}>Load more posts</button>
+      {posts.map(p => <Card key={p.id} title={p.title} body={p.body} />)}
     </div>
   )
 }
 
 export default Post;
-
-export const getStaticProps: GetServerSideProps<PostProps> = async ({ params }) => {
-  if (!params) {
-    return {
-      notFound: true,
-    }
-  }
-  const { id } = params;
-  console.log(params);
-  const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-  if (!response.ok) {
-    return {
-      redirect: {
-        destination: '/posts',
-        permanent: true,
-      }
-    }
-  }
-  const post = await response.json();
-  console.log({ post });
-    return {
-      props: {
-        post,
-        error: '',
-      }
-    }
-}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -71,4 +53,29 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths,
     fallback: true,
   }
+}
+
+export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
+  if (!params) {
+    return {
+      notFound: true,
+    }
+  }
+  const { id } = params;
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  if (!response.ok) {
+    return {
+      redirect: {
+        destination: '/posts',
+        permanent: true,
+      }
+    }
+  }
+  const post = await response.json();
+    return {
+      props: {
+        post,
+        error: '',
+      }
+    }
 }
