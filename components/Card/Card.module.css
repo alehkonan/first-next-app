@@ -1,0 +1,13 @@
+.card {
+  min-width: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.header {
+  font-variant: small-caps;
+}
+
+.body {
+  font-variant-ligatures: historical-ligatures;
+}
