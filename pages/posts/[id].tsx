@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { Card } from '../../components/Card/Card';
 
 interface IPost {
@@ -30,7 +31,11 @@ const Post: NextPage<PostProps> = ({ post, error }) => {
         </Card>
       )}
       {error && <span>{error}</span>}
-      <button onClick={handleClick}>Load more posts</button>
+      <Button
+        onClick={handleClick}
+      >
+        Load more posts
+      </Button>
       {posts.map(p => <Card key={p.id} title={p.title} body={p.body} />)}
     </div>
   )
