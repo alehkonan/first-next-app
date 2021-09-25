@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React, { FunctionComponent, Props } from 'react';
 import { Header } from './Header/Header';
 
-const Layout: FC = ({ children }) => {
+const Layout: FunctionComponent = ({ children }) => {
   return (
     <div>
       <Header />
@@ -12,11 +12,11 @@ const Layout: FC = ({ children }) => {
   )
 }
 
-export const componentWithLayout = (Component: FC) => {
-  return function withLayout() {
+export const componentWithLayout = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
+  return function withLayout(props: T) {
     return (
       <Layout>
-        <Component />
+        <Component { ...props } />
       </Layout>
     )
   };
