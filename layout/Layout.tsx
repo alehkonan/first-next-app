@@ -1,11 +1,12 @@
 import React, { FunctionComponent, Props } from 'react';
 import { Header } from './Header/Header';
+import { Navigation } from './Navigation/Navigation';
 
 const Layout: FunctionComponent = ({ children }) => {
   return (
     <div>
       <Header />
-      <nav>Navigation</nav>
+      <Navigation />
       <main>{children}</main>
       <footer>Footer</footer>
     </div>

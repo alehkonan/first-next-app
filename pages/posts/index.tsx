@@ -1,6 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
 import { Card } from '../../components/Card/Card';
+import { componentWithLayout } from '../../layout/Layout';
 
 interface IPost {
   userId: number;
@@ -9,7 +10,7 @@ interface IPost {
   body: string;
 }
 
-interface PostsProps {
+interface PostsProps extends Record<string, unknown> {
   posts: IPost[];
   error: string;
 }
@@ -26,7 +27,7 @@ const Posts: NextPage<PostsProps> = ({ posts, error }) => {
   )
 }
 
-export default Posts;
+export default componentWithLayout(Posts);
 
 export const getStaticProps: GetStaticProps<PostsProps> = async () => {
   try {

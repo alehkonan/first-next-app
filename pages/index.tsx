@@ -7,7 +7,7 @@ interface HomeProps extends Record<string, unknown> {
   text?: string;
 }
 
-const Home: FunctionComponent<HomeProps> = ({ text }) => {
+const Home: NextPage<HomeProps> = ({ text }) => {
   return (
     <div className={styles.main}>
       <h1>Main page</h1>
