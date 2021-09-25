@@ -3,7 +3,10 @@ import React from 'react';
 
 const About: NextPage = () => {
   return (
-    <div>About page</div>
+    <>
+      <h3>About page</h3>
+      <p>This is the page about what this site about</p>
+    </>
   )
 }
 
