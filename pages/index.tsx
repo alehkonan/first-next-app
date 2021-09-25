@@ -8,8 +8,6 @@ interface HomeProps extends Record<string, unknown> {
 }
 
 const Home: FunctionComponent<HomeProps> = ({ text }) => {
-  console.log(text);
-
   return (
     <div className={styles.main}>
       <h1>Main page</h1>
@@ -20,7 +18,9 @@ const Home: FunctionComponent<HomeProps> = ({ text }) => {
 
 export const getStaticProps: GetStaticProps<HomeProps> = () => {
   return {
-    props: { text: '' }
+    props: {
+      text: 'Some changes has been done',
+    }
   }
 }
 
