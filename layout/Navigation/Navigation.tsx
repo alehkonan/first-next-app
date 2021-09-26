@@ -5,15 +5,15 @@ export const Navigation: FunctionComponent = () => {
   return (
     <nav>
       <ul>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        <Link href="/posts">
-          <a>Posts</a>
-        </Link>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
+        <li>
+          <Link href="/">Hello</Link>
+        </li>
+        <li>
+          <Link href="/posts">Posts</Link>
+        </li>
+        <li>
+          <Link href="/about">About</Link>
+        </li>
       </ul>
     </nav>
   )
