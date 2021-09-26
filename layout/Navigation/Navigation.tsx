@@ -6,7 +6,7 @@ export const Navigation: FunctionComponent = () => {
     <nav>
       <ul>
         <li>
-          <Link href="/">Hello</Link>
+          <Link href="/">Home</Link>
         </li>
         <li>
           <Link href="/posts">Posts</Link>
