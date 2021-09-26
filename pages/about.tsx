@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import React from 'react';
+import { componentWithLayout } from '../layout/Layout';
 
 const About: NextPage = () => {
   return (
@@ -10,4 +11,4 @@ const About: NextPage = () => {
   )
 }
 
-export default About;
+export default componentWithLayout(About);

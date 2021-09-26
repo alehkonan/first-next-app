@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { Card } from '../../components/Card/Card';
+import { componentWithLayout } from '../../layout/Layout';
 
 interface IPost {
   userId: number;
@@ -10,7 +10,7 @@ interface IPost {
   body: string;
 }
 
-interface PostProps {
+interface PostProps extends Record<string, unknown> {
   post: IPost | null;
   error: string;
 }
@@ -31,17 +31,17 @@ const Post: NextPage<PostProps> = ({ post, error }) => {
         </Card>
       )}
       {error && <span>{error}</span>}
-      <Button
+      <button
         onClick={handleClick}
       >
         Load more posts
-      </Button>
+      </button>
       {posts.map(p => <Card key={p.id} title={p.title} body={p.body} />)}
     </div>
   )
 }
 
-export default Post;
+export default componentWithLayout(Post);
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts');
