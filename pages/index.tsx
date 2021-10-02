@@ -10,7 +10,6 @@ interface HomeProps extends Record<string, unknown> {
 
 const Home: NextPage<HomeProps> = ({ text }) => {
   const [session, loading] = useSession();
-  useEffect(() => console.log(session, loading), [session, loading]);
 
   return (
     <div className={styles.main}>
