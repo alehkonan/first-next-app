@@ -5,3 +5,7 @@ body {
   box-sizing: border-box;
   font-family: 'Ubuntu', sans-serif;
 }
+
+:root {
+  --primary-color: #1976d2;
+}

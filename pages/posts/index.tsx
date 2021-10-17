@@ -2,6 +2,7 @@ import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
 import { Card } from '@components/Card';
 import { layoutWrapper } from '@layout';
+import { Typography } from '@material-ui/core';
 
 interface IPost {
   userId: number;
@@ -17,13 +18,13 @@ interface PostsProps extends Record<string, unknown> {
 
 const Posts: NextPage<PostsProps> = ({ posts, error }) => {
   return (
-    <div>
-      All posts
+    <>
+      <Typography variant="h2">All posts</Typography>
       {posts.map(post => (
         <Card key={post.id} title={post.title} body={post.body} />
       ))}
       {error && (<span>{error}</span>)}
-    </div>
+    </>
   )
 }
 
