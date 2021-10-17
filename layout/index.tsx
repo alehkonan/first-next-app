@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Header } from './Header/Header';
-import { Navigation } from './Navigation/Navigation';
+import { Header } from './Header';
+import { Navigation } from './Navigation';
 
 const Layout: FunctionComponent = ({ children }) => {
   return (
@@ -13,7 +13,7 @@ const Layout: FunctionComponent = ({ children }) => {
   )
 }
 
-export const componentWithLayout = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
+export const layoutWrapper = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
   return function withLayout(props: T) {
     return (
       <Layout>

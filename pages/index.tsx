@@ -1,8 +1,7 @@
-import type { GetStaticProps, NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next';
 import { getSession, signIn, signOut, useSession } from 'next-auth/client';
 import { useEffect } from 'react';
-import { componentWithLayout } from '../layout/Layout'
-import styles from '../styles/Home.module.css'
+import { layoutWrapper } from '@layout';
 
 interface HomeProps extends Record<string, unknown> {
   text?: string;
@@ -10,10 +9,9 @@ interface HomeProps extends Record<string, unknown> {
 
 const Home: NextPage<HomeProps> = ({ text }) => {
   const [session, loading] = useSession();
-  useEffect(() => console.log(session, loading), [session, loading]);
 
   return (
-    <div className={styles.main}>
+    <div>
       <h1>Main page</h1>
       {text !== undefined && <p>{text}</p>}
       {session ? (
@@ -25,7 +23,7 @@ const Home: NextPage<HomeProps> = ({ text }) => {
   )
 }
 
-export default componentWithLayout(Home);
+export default layoutWrapper(Home);
 
 export const getStaticProps: GetStaticProps<HomeProps> = () => {
   return {

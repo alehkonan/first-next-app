@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import React, { useState } from 'react';
-import { Card } from '../../components/Card/Card';
-import { componentWithLayout } from '../../layout/Layout';
+import { Card } from '../../components/Card';
+import { layoutWrapper } from '@layout';
 
 interface IPost {
   userId: number;
@@ -41,7 +41,7 @@ const Post: NextPage<PostProps> = ({ post, error }) => {
   )
 }
 
-export default componentWithLayout(Post);
+export default layoutWrapper(Post);
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts');
