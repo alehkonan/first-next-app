@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import React from 'react';
-import { componentWithLayout } from '../layout/Layout';
+import { layoutWrapper } from '@layout';
 
 const ServerErrorPage: NextPage = () => {
   return (
@@ -10,4 +10,4 @@ const ServerErrorPage: NextPage = () => {
   )
 }
 
-export default componentWithLayout(ServerErrorPage);
+export default layoutWrapper(ServerErrorPage);

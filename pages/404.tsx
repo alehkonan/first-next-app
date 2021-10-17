@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import React from 'react';
-import { componentWithLayout } from '../layout/Layout';
+import { layoutWrapper } from '@layout';
 
 const NotFoundPage: NextPage = () => {
   return (
@@ -10,4 +10,4 @@ const NotFoundPage: NextPage = () => {
   )
 }
 
-export default componentWithLayout(NotFoundPage);
+export default layoutWrapper(NotFoundPage);
