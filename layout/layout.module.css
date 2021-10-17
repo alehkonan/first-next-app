@@ -1,0 +1,52 @@
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "head head head head"
+    "nav main main main"
+    "foot foot foot foot";
+}
+
+
+.header {
+  grid-area: head;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: foot;
+}
+
+@media (min-width: 1200px) {
+  .layout {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      "head head head head head head"
+      ". nav main main main ."
+      "foot foot foot foot foot foot";
+  }
+}
+
+@media (max-width: 600px) {
+  .layout {
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "main"
+      "foot";
+  }
+
+  .nav {
+    display: none;
+  }
+}

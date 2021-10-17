@@ -1,9 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import React, { DetailedHTMLProps, FunctionComponent, HTMLAttributes } from 'react';
 import Link from 'next/link';
 
-export const Navigation: FunctionComponent = () => {
+interface NavProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {}
+
+export const Navigation: FunctionComponent<NavProps> = ({ className }) => {
   return (
-    <nav>
+    <nav className={className}>
       <ul>
         <li>
           <Link href="/">Home</Link>

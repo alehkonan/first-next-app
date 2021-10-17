@@ -1,14 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import { Header } from './Header';
 import { Navigation } from './Navigation';
+import styles from './layout.module.css';
+import { Footer } from './Footer';
 
 const Layout: FunctionComponent = ({ children }) => {
   return (
-    <div>
-      <Header />
-      <Navigation />
-      <main>{children}</main>
-      <footer>Footer</footer>
+    <div className={styles.layout}>
+      <Header className={styles.header} />
+      <Navigation className={styles.nav} />
+      <main className={styles.main}>{children}</main>
+      <Footer className={styles.footer} />
     </div>
   )
 }
