@@ -1,24 +1,16 @@
 import type { GetStaticProps, NextPage } from 'next';
-import { getSession, signIn, signOut, useSession } from 'next-auth/client';
-import { useEffect } from 'react';
 import { layoutWrapper } from '@layout';
+import { Typography } from '@material-ui/core';
 
 interface HomeProps extends Record<string, unknown> {
   text?: string;
 }
 
 const Home: NextPage<HomeProps> = ({ text }) => {
-  const [session, loading] = useSession();
-
   return (
     <div>
-      <h1>Main page</h1>
+      <Typography variant="h2" component="h2">Main</Typography>
       {text !== undefined && <p>{text}</p>}
-      {session ? (
-        <button onClick={() => signOut()}>Sign out</button>
-      ) : (
-        <button onClick={() => signIn()}>Sign in</button>
-      )}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React, { DetailedHTMLProps, FunctionComponent, HTMLAttributes } from 'react';
 import { Typography } from '@material-ui/core';
-import styles from './footer.module.css';
 import cn from 'classnames';
+import styles from './footer.module.css';
 
 interface FooterProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
 
