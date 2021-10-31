@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
-import { Card } from '@components/Card';
+import { Card } from '@components/Card'
 import { layoutWrapper } from '@layout';
 import { Typography } from '@material-ui/core';
 
