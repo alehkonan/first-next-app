@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'next-auth/client';
 import '../styles/globals.css'
+import { Layout } from '@layout';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -11,7 +12,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta name="description" content="it`s a simple next app with auth" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </Provider>
   )
 }

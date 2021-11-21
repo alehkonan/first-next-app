@@ -1,12 +1,18 @@
 import type { GetStaticProps, NextPage } from 'next';
-import { layoutWrapper } from '@layout';
 import { Typography } from '@material-ui/core';
-
-interface HomeProps extends Record<string, unknown> {
+type Props = {
   text?: string;
 }
 
-const Home: NextPage<HomeProps> = ({ text }) => {
+export const getStaticProps: GetStaticProps<Props> = () => {
+  return {
+    props: {
+      text: 'Some changes has been done',
+    }
+  }
+}
+
+const Home: NextPage<Props> = ({ text }) => {
   return (
     <div>
       <Typography variant="h2" component="h2">Main</Typography>
@@ -15,12 +21,4 @@ const Home: NextPage<HomeProps> = ({ text }) => {
   )
 }
 
-export default layoutWrapper(Home);
-
-export const getStaticProps: GetStaticProps<HomeProps> = () => {
-  return {
-    props: {
-      text: 'Some changes has been done',
-    }
-  }
-}
+export default Home;
