@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { Header } from './Header';
 import { Navigation } from './Navigation';
-import styles from './layout.module.css';
+import styles from './styles.module.css';
 import { Footer } from './Footer';
 
-const Layout: FunctionComponent = ({ children }) => {
+export const Layout: FunctionComponent = ({ children }) => {
   return (
     <div className={styles.layout}>
       <Header className={styles.header} />
@@ -13,14 +13,4 @@ const Layout: FunctionComponent = ({ children }) => {
       <Footer className={styles.footer} />
     </div>
   )
-}
-
-export const layoutWrapper = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
-  return function withLayout(props: T) {
-    return (
-      <Layout>
-        <Component { ...props } />
-      </Layout>
-    )
-  };
 }
