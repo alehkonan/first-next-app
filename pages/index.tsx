@@ -1,23 +1,32 @@
 import type { GetStaticProps, NextPage } from 'next';
-import { Typography } from '@material-ui/core';
-type Props = {
-  text?: string;
+import { List, ListItem } from '@material-ui/core';
+
+type Technology = {
+  id: number;
+  name: string;
 }
 
-export const getStaticProps: GetStaticProps<Props> = () => {
+type Props = {
+  technologies: Technology[];
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const { API_URL = '' } = process.env;
+  const response = await fetch(`${API_URL}/technologies`);
+  const data = await response.json();
+
   return {
     props: {
-      text: 'Some changes has been done',
+      technologies: data,
     }
   }
 }
 
-const Home: NextPage<Props> = ({ text }) => {
+const Home: NextPage<Props> = ({ technologies }) => {
   return (
-    <div>
-      <Typography variant="h2" component="h2">Main</Typography>
-      {text !== undefined && <p>{text}</p>}
-    </div>
+    <List>
+      {technologies.map((technology) => <ListItem key={technology.id}>{technology.name}</ListItem>)}
+    </List>
   )
 }
 
